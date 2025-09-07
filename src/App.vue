@@ -4,9 +4,23 @@
     <!-- 이름 in 횟수(데이터) => 데이터가 들어가면 데이터의 길이만큼 반복 -->
     <a v-for="(menu, i) in menus" :key="i">{{ menu }}</a>
   </div>
-  <div v-for="(product, i) in products" :key="i">
-    <h4>{{ product.name }}</h4>
-    <p>{{ product.price }}</p>
+  <div>
+    <h4>{{ products[0] }}</h4>
+    <p>110 만원</p>
+    <button @click="counts[0]++">허위매물 신고</button>
+    <span>신고수 : {{ counts[0] }}</span>
+  </div>
+  <div>
+    <h4>{{ products[1] }}</h4>
+    <p>70 만원</p>
+    <button @click="counts[1]++">허위매물 신고</button>
+    <span>신고수 : {{ counts[1] }}</span>
+  </div>
+  <div>
+    <h4>{{ products[2] }}</h4>
+    <p>100 만원</p>
+    <button @click="counts[2]++">허위매물 신고</button>
+    <span>신고수 : {{ counts[2] }}</span>
   </div>
 </template>
 
@@ -17,13 +31,16 @@ export default {
   // data 보관함 - data는 object형식으로 저장
   data() {
     return {
+      counts: [0, 0, 0],
       menus: ["Home", "Shop", "About"],
-      products: [
-        { name: "역삼동원룸", price: "110만원" },
-        { name: "천호동원룸", price: "80만원" },
-        { name: "마포구원룸", price: "100만원" },
-      ],
+      products: ["역삼동원룸", "천호동원룸", "마포구원룸"],
     };
+  },
+  // 함수
+  methods: {
+    increase() {
+      this.count++;
+    },
   },
   components: {},
 };
